@@ -4,7 +4,7 @@ var clean = require('gulp-clean');
 var server = require('gulp-develop-server');
 var mocha = require('gulp-mocha');
 
-var serverTS = ["**/*.ts", "!node_modules/**", '!bin/**'];
+var serverTS = ["**/*.ts", "!node_modules/**"];
 
 gulp.task('ts', ['clean'], function() {
     return gulp
@@ -20,8 +20,7 @@ gulp.task('clean', function () {
             '**/*.js',
             '**/*.js.map',
             '!node_modules/**',
-            '!gulpfile.js',
-            '!bin/**'
+            '!gulpfile.js'
         ], {read: false})
         .pipe(clean())
 });
@@ -32,7 +31,7 @@ gulp.task('load:fixtures', function (cb) {
 });
 
 gulp.task('server:start', ['ts'], function() {
-    server.listen({path: 'bin/www'}, function(error) {
+    server.listen({path: 'app.js'}, function(error) {
         console.log(error);
     });
 });

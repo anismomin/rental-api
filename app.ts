@@ -19,6 +19,7 @@ mongoose.connect(config.database, function(err :any){
   }
 });
 app.set('secreKey', config.secret);
+var port = process.env.PORT || 3000;
 //var routes = require('./routes/index');
 var api = require('./routes/api');
 
@@ -61,5 +62,7 @@ app.use(function(err: any, req: Request, res: Response, next: Function) {
   });
 });
 
+app.listen(port, function() {
+  console.log('Our app is running on http://localhost:' + port);
+});
 
-module.exports = app;

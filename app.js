@@ -17,6 +17,7 @@ mongoose.connect(config.database, function (err) {
     }
 });
 app.set('secreKey', config.secret);
+var port = process.env.PORT || 3000;
 //var routes = require('./routes/index');
 var api = require('./routes/api');
 // uncomment after placing your favicon in /public
@@ -52,4 +53,6 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-module.exports = app;
+app.listen(port, function () {
+    console.log('Our app is running on http://localhost:' + port);
+});
